@@ -1,7 +1,10 @@
 package br.com.gio.gncweb.resources;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -62,6 +65,7 @@ public abstract class BaseResource<T extends Model> {
 		response.setData(data);
 		return response;
 	}
+
 	
 	public abstract BaseService<T> getService();
 	

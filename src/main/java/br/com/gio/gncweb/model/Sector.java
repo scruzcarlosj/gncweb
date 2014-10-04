@@ -6,11 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.gio.gncweb.util.Model;
 
 @Entity
 @Table(name = "sector")
+@XmlRootElement
 public class Sector extends Model {
 
 	private static final long serialVersionUID = 1L;

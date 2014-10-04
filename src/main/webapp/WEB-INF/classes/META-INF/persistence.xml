@@ -2,14 +2,23 @@
 <persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
     <persistence-unit name="gncwebPU" transaction-type="JTA">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <jta-data-source>java:/gncwebDS</jta-data-source>
+        <jta-data-source>java:jboss/datasources/gncwebDS</jta-data-source>
+        
         <properties>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.use_sql_comments" value="false" />
-<!--             <property name="hibernate.jdbc.wrap_result_sets" value="false" /> -->
-<!--             <property name="hibernate.hibernate.cache.use_query_cache" value="true" /> -->
-        </properties>
+			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.DefaultComponentSafeNamingStrategy" />
+
+			<!-- Misc configuration -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- Cache configuration -->
+			<property name="hibernate.cache.use_second_level_cache" value="true" />
+			<property name="hibernate.cache.use_query_cache" value="true" />
+
+			<!-- HSQLDB Datasource configuration -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
+		
     </persistence-unit>
 </persistence>

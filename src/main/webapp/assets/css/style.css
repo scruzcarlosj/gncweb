@@ -1,0 +1,14 @@
+#loading-bar .bar {
+  position: absolute;
+  height: 5px;
+  background: #dc2f2c;
+}
+
+#loading-bar .peg {
+  box-shadow: 0 0 10px #dc2f2c , 0 0 5px #dc2f2c ;
+}
+
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  #dc2f2c ;
+  border-left-color: #dc2f2c ;
+}

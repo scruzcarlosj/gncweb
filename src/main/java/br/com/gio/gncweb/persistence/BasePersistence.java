@@ -10,7 +10,7 @@ import br.com.gio.gncweb.util.Model;
 
 public abstract class BasePersistence<PK, T extends Model> {
 	
-	@PersistenceContext(unitName="gncweb", name="gncweb")
+	@PersistenceContext
 	protected EntityManager em;
 	
 	@SuppressWarnings("unchecked")
@@ -44,6 +44,10 @@ public abstract class BasePersistence<PK, T extends Model> {
 		Class<?> clazz = (Class<?>) ((ParameterizedType) this.getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[1];
 		return clazz;
+	}
+	
+	public EntityManager getEntityManager(){
+		return em;
 	}
 
 }
