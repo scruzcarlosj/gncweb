@@ -11,7 +11,7 @@
 	     <div class="form-group">
 		    <div class="col-lg-12" style="text-align: center">
 		      <button type="submit" class="btn btn-primary">Buscar</button>
-		      <button ng-click="clean()" class="btn btn-default">Limpar</button>
+		      <a ng-click="clean()" class="btn btn-default">Limpar</a>
 		      <a ng-href="#!/cadastrar/setor" class="btn btn-default">Novo</a>
 		    </div>
 		</div>
@@ -35,7 +35,7 @@
 					<td>{{sector.name}}</td>
 					<td>
 						<a ng-href="#!/editar/setor/{{sector.id}}">Editar</a> |
-						<a ng-click="remove(sector, $index)">Remover</a>
+						<a ng-confirm-click="Deseja realmente remover esse item?" ng-click="remove(sector, $index)">Remover</a>
 					</td>
 				</tr>
 			</tbody>

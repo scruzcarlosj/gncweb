@@ -18,3 +18,16 @@ gncweb.config(function($routeProvider, $locationProvider, cfpLoadingBarProvider)
 		templateUrl: 'partials/pages/sector/createSector.html'});
 	
 });
+
+gncweb.directive('ngConfirmClick' [function(){
+	restrict = 'A';
+	replace = false;
+	link = function($scope, $element, $attr){
+		msg = $attr.ngConfirmClick || "Are you sure?"
+		clickAction = $attr.confirmedClickAction;
+
+		$element.bind('click', function(event){
+			if(window.confirm(msg)) $scope.$eval(clickAction);
+		});
+	};
+}]); 
