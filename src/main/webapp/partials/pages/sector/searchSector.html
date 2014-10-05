@@ -35,7 +35,7 @@
 					<td>{{sector.name}}</td>
 					<td>
 						<a ng-href="#!/editar/setor/{{sector.id}}">Editar</a> |
-						<a ng-confirm-click="Deseja realmente remover esse item?" ng-click="remove(sector, $index)">Remover</a>
+						<a ng-confirm-message="Deseja realmente remover esse item?" ng-confirm-click="remove(sector, $index)">Remover</a>
 					</td>
 				</tr>
 			</tbody>
