@@ -1,23 +1,23 @@
 'use strict';
 
-gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$location', 'SectorService', 
-                   function($scope, $http,$routeParams, $location, sectorService){
+gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$location', 'PageMode', 'SectorService', 
+                   function($scope, $http,$routeParams, $location, PageMode, sectorService){
 	
 	$scope.sectors = [];
 	$scope.sector = {id: null, name: '' };
 	
 	var url = $scope.API_SECTOR_URL;
 	
-	$scope.find = function(){
-		if($scope.sector.name){
-			$http.get(url + '/' + $scope.sector.name).success(function(response){
-				if(response.status.code === 200) $scope.sectors = response.data;
-			});
-		} else {
-			$http.get(url).success(function(response){
-				if(response.status.code === 200) $scope.sectors = response.data;
-			});
-		}	
+	$scope.findAll = function(){
+		$http.get(url).success(function(response){
+			if(response.status.code === 200) $scope.sectors = response.data;
+		});
+	};
+	
+	$scope.findByName = function(){
+		$http.get(url + '/' + $scope.sector.name).success(function(response){
+			if(response.status.code === 200) $scope.sectors = response.data;
+		});
 	};
 	
 	$scope.clean = function(){
@@ -37,12 +37,13 @@ gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$loca
 		
 	};
 	
-	$scope.edit = function(){
+	$scope.loadPage = function(){
 		if($routeParams.id){
 			$http.get(url + '/' + $routeParams.id).success(function(response){
 				if(response.status.code === 200) $scope.sector = response.data;
-			});
+			}); 
 		}
+		$scope.pageMode = PageMode;
 	};
 	
 	$scope.remove = function(sector, index){
