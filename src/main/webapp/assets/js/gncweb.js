@@ -7,15 +7,31 @@ gncweb.config(function($routeProvider, $locationProvider, cfpLoadingBarProvider)
 	
 	$routeProvider.when('/pesquisar/setor', {
 		controller: 'SectorController',
-		templateUrl: 'partials/pages/sector/searchSector.html'});
+		templateUrl: 'partials/pages/sector/searchSector.html',
+		resolve: {
+			PageMode: function(SearchMode){return SearchMode;}
+		}});
 	
 	$routeProvider.when('/cadastrar/setor', {
 		controller: 'SectorController',
-		templateUrl: 'partials/pages/sector/createSector.html'});
+		templateUrl: 'partials/pages/sector/createSector.html',
+		resolve: {
+			PageMode: function(CreateMode){return CreateMode;}
+	}});
 	
 	$routeProvider.when('/editar/setor/:id', {
+		templateUrl: 'partials/pages/sector/createSector.html',
 		controller: 'SectorController',
-		templateUrl: 'partials/pages/sector/createSector.html'});
+		resolve: {
+			PageMode: function(EditMode){return EditMode;}
+	}});
+	
+	$routeProvider.when('/visualizar/setor/:id', {
+		templateUrl: 'partials/pages/sector/createSector.html',
+		controller: 'SectorController',
+		resolve: {
+			PageMode: function(ViewMode){return ViewMode;}
+	}});
 	
 });
 
@@ -34,6 +50,42 @@ gncweb.directive('ngConfirmClick', [function() {
     };
 }]);
 
+gncweb.factory('ViewMode', function(){
+	return {
+		viewMode: true,
+		editMode: false,
+		createMode: false,
+		searchMode: false
+	};
+});
+
+gncweb.factory('EditMode', function(){
+	return {
+		viewMode: false,
+		editMode: true,
+		createMode: false,
+		searchMode: false
+	};
+});
+
+gncweb.factory('CreateMode', function(){
+	return {
+		viewMode: false,
+		editMode: false,
+		createMode: true,
+		searchMode: false
+	};
+});
+
+gncweb.factory('SearchMode', function(){
+	return {
+		viewMode: false,
+		editMode: false,
+		createMode: false,
+		searchMode: true
+	};
+});
+
 gncweb.run(function($rootScope){
 	//API Urls
 	$rootScope.API_SECTOR_URL = 'api/sectors';
@@ -50,5 +102,4 @@ gncweb.run(function($rootScope){
 			class_name: 'gritter-light'
 		});
 	});
-	
 });
