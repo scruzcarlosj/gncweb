@@ -5,7 +5,7 @@
 			<legend>Cadastrar Setor</legend>
 			
 			<div class="form-group" ng-class="!frm.nameTxt.$dirty ? '' : frm.nameTxt.$valid ? 'has-success has-feedback' : 'has-error has-feedback'">
-				 <label for="name" class="col-lg-2 control-label">Nome</label>
+				 <label for="name" class="col-lg-2 control-label" ng-required>Nome <span style="color: red"> *</span></label>
 			      <div class="col-lg-6">
 			        <input ng-model="sector.name" type="text" name="nameTxt" class="form-control" id="name" placeholder="Nome" required>
 			      </div>

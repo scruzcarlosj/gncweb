@@ -6,13 +6,15 @@ gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$loca
 	$scope.sectors = [];
 	$scope.sector = {id: null, name: '' };
 	
+	var url = $scope.API_SECTOR_URL;
+	
 	$scope.find = function(){
 		if($scope.sector.name){
-			$http.get('api/sectors/' + $scope.sector.name).success(function(response){
+			$http.get(url + '/' + $scope.sector.name).success(function(response){
 				if(response.status.code === 200) $scope.sectors = response.data;
 			});
 		} else {
-			$http.get('api/sectors').success(function(response){
+			$http.get(url).success(function(response){
 				if(response.status.code === 200) $scope.sectors = response.data;
 			});
 		}	
@@ -25,24 +27,30 @@ gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$loca
 	
 	$scope.save = function(){
 		if(!$routeParams.id){
-			$http.post('api/sectors', $scope.sector);
+			$http.post(url, $scope.sector);
+			$scope.$emit('addSuccessMessage', $scope.CREATE_SUCCESS_MESSAGE);
 		} else {
-			$http.put('api/sectors', $scope.sector);
+			$http.put(url, $scope.sector);
+			$scope.$emit('addSuccessMessage', $scope.UPDATE_SUCCESS_MESSAGE);
 		}
 		$location.path('pesquisar/setor');
+		
 	};
 	
 	$scope.edit = function(){
 		if($routeParams.id){
-			$http.get('api/sectors/' + $routeParams.id).success(function(response){
+			$http.get(url + '/' + $routeParams.id).success(function(response){
 				if(response.status.code === 200) $scope.sector = response.data;
 			});
 		}
 	};
 	
 	$scope.remove = function(sector, index){
-		$http.delete('api/sectors/' + sector.id).success(function(response){
-			if(response.status.code === 200) $scope.sectors.splice(index, 1);
+		$http.delete(url + '/' + sector.id).success(function(response){
+			if(response.status.code === 200) {
+				$scope.sectors.splice(index, 1);
+				$scope.$emit('addSuccessMessage', $scope.REMOVE_SUCCESS_MESSAGE);
+			}
 		});
 	};
 	
