@@ -4,18 +4,19 @@
 		<fieldset>
 			<legend ng-show="pageMode.createMode">Cadastrar Setor</legend>
 			<legend ng-show="pageMode.editMode">Editar Setor</legend>
+			<legend ng-show="pageMode.viewMode">Visualizar Setor</legend>
 			
 			<div class="form-group" ng-class="!frm.nameTxt.$dirty ? '' : frm.nameTxt.$valid ? 'has-success has-feedback' : 'has-error has-feedback'">
-				 <label for="name" class="col-lg-2 control-label" ng-required>Nome <span style="color: red"> *</span></label>
+				 <label for="name" class="col-lg-2 control-label">Nome <span class="required-field"> *</span></label>
 			      <div class="col-lg-6">
 			        <input ng-model="sector.name" type="text" name="nameTxt" class="form-control" id="name" placeholder="Nome" required ng-disabled="pageMode.viewMode">
 			      </div>
 			</div>
 
 			<div class="form-group">
-			    <div class="col-lg-12" style="text-align: center">
+			    <div class="col-lg-12 center">
 			      <button type="submit" class="btn btn-primary" ng-disabled="frm.$invalid" ng-hide="pageMode.viewMode">Salvar</button>
-			      <a ng-href="#!/pesquisar/setor" class="btn btn-default">{{!pageMode.viewMode ? 'Cancelar' : 'Voltar'}}</a>
+			      <a ng-href="#!/pesquisar/setor" class="btn" ng-class="pageMode.viewMode ? 'btn-primary' : 'btn-default' ">{{!pageMode.viewMode ? 'Cancelar' : 'Voltar'}}</a>
 			    </div>
 			</div>
 			

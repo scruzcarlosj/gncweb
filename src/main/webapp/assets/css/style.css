@@ -16,3 +16,11 @@
 .container-view{
 	padding-top: 90px;
 }
+
+.required-field{
+	olor: red;
+}
+
+.center{
+	text-align: center;
+}

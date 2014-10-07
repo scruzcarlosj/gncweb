@@ -3,6 +3,7 @@ package br.com.gio.gncweb.persistence;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.persistence.TypedQuery;
 
 import br.com.gio.gncweb.model.User;
 
@@ -15,6 +16,21 @@ public class UserPersistence extends BasePersistence<Long, User> {
 	
 	public User findById(Long id){
 		return findById(id);
+	}
+	
+	public List<User> findByName(String name){
+		
+		StringBuilder hql = new StringBuilder();
+		
+		hql.append("select user from User as user ");
+		hql.append("where user.name like :name ");
+		
+		TypedQuery<User>  query = getEntityManager().createQuery(hql.toString(), User.class);
+		query.setParameter("name", name != null ? '%' + name + '%' : name);
+		
+		return query.getResultList();
+		
+		
 	}
 	
 }
