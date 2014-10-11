@@ -34,13 +34,13 @@
 	          <label for="email" class="placeholder-hidden">Email</label>
 	          <input type="email" ng-model="user.email" class="form-control" id="email" name="email" placeholder="Email" required>
 	          <span class="fa fa-check form-control-feedback" style="margin-top: 12px;" ng-show="frm.email.$dirty && frm.email.$valid"></span>
-	        </div> <!-- /.form-group -->
+	        </div>
 	
 	        <div class="form-group" ng-class="!frm.password.$dirty ? '' : frm.password.$valid ? 'has-success has-feedback' : 'has-error has-feedback'">
 	          <label for="password" class="placeholder-hidden">Senha</label>
 	          <input type="password" ng-model="user.password" class="form-control" id="password" name="password" placeholder="Senha" required>
 	          <span class="fa fa-check form-control-feedback" style="margin-top: 12px;" ng-show="frm.password.$dirty && frm.password.$valid"></span>
-	        </div> <!-- /.form-group -->
+	        </div>
 	
 	        <div class="form-group clearfix">
 	          <div class="pull-left">					
@@ -50,15 +50,15 @@
 	          </div>
 	
 	          <div class="pull-right">
-	            <small><a href="./account-forgot.html">Esqueceu a senha?</a></small>
+	            <small><a href="#">Esqueceu a senha?</a></small>
 	          </div>
-	        </div> <!-- /.form-group -->
+	        </div>
 	
 	        <div class="form-group">
 	          <button type="submit" ng-disabled="frm.$invalid" class="btn btn-primary btn-block btn-lg" tabindex="4">
 	            Login &nbsp; <i class="fa fa-play-circle"></i>
 	          </button>
-	        </div> <!-- /.form-group -->
+	        </div>
 	
 	      </form>
 	</div>
