@@ -1,7 +1,7 @@
 gncweb
 ======
 
-<h1>Security</h1>
+<h3>Security</h3>
 
 <security-domains>
     <security-domain name="gncweb-jaas-realm">
