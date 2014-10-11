@@ -1,8 +1,3 @@
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-</head>
-
 <div class="well bs-component"  ng-init="loadPage()">
 
 	<form class="form-horizontal" name="frm" ng-submit="save()">
@@ -35,8 +30,8 @@
 			<div class="form-group" ng-class="!frm.sector.$dirty ? '' : frm.sector.$valid ? 'has-success has-feedback' : 'has-error has-feedback'">
 				 <label for="sector" class="col-lg-2 control-label">Setor <span class="required-field"> *</span></label>
 			      <div class="col-lg-6">
-			        <select name="sector" class="form-control" ng-model="user.sector" ng-options="sector.name for sector in sectors" required ng-disabled="pageMode.viewMode">
-			        	<option value="">Selecione</option>
+			        <select name="sector" class="form-control" ng-model="user.sector.id" ng-options="sector.id as sector.name for sector in sectors" required ng-disabled="pageMode.viewMode">
+					<option value="">Selecione</option>
 					</select>
 			      </div>
 			</div>

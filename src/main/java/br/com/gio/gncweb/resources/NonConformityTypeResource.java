@@ -11,31 +11,31 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.gio.gncweb.model.User;
+import br.com.gio.gncweb.model.NonConformityType;
 import br.com.gio.gncweb.service.BaseService;
-import br.com.gio.gncweb.service.UserService;
+import br.com.gio.gncweb.service.NonConformityTypeService;
 import br.com.gio.gncweb.util.Response;
 
 @Singleton
 @Path("/nonconformitytypes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class NonConformityTypeResource extends BaseResource<User> {
+public class NonConformityTypeResource extends BaseResource<NonConformityType> {
 	
 	@Inject
-	private UserService service;
+	private NonConformityTypeService service;
 	
 	@GET
 	@Path("/{name}")
-	public Response<List<User>> findByName(@PathParam("name") String name){
+	public Response<List<NonConformityType>> findByName(@PathParam("name") String name){
 		
-		List<User> users = service.findByName(name);
-		return createSuccessResponseListModel(users);
+		List<NonConformityType> list = service.findByName(name);
+		return createSuccessResponseListModel(list);
 	}
 
 
 	@Override
-	public BaseService<User> getService() {
+	public BaseService<NonConformityType> getService() {
 		return service;
 	}
 

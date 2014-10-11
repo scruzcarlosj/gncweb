@@ -101,7 +101,18 @@ gncweb.config(function($routeProvider, $locationProvider, cfpLoadingBarProvider)
 	    	Sectors: function(){return null;}
 	}});
 	
+	
+	//:::::::::::::: NonConformityType Routes:::::::::::::
+	$routeProvider.when('/pesquisar/tipoNaoConformidade', {
+		templateUrl: 'partials/pages/nonConformityType/searchNonConformityType.html',
+		controller: 'NonConformityTypeController',
+		resolve: {
+			PageMode: function(SearchMode){return SearchMode;},
+	}});
+	
+	
 });
+
 
 //::::::::: Directives ::::::::::::
 gncweb.directive('ngConfirmClick', [function() {
@@ -168,6 +179,7 @@ gncweb.run(function($rootScope){
 	//API Urls
 	$rootScope.API_SECTOR_URL = 'api/sectors';
 	$rootScope.API_USER_URL = 'api/users';
+	$rootScope.API_NON_CONFIRMITY_TYPE_URL = 'api/nonconformitytypes';
 	
 	//Default messages
 	$rootScope.CREATE_SUCCESS_MESSAGE = 'Cadastro realizado com sucesso';
