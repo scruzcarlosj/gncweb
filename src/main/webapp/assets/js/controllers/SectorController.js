@@ -1,11 +1,8 @@
 'use strict';
 
-gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$location', 'PageMode', 
-                   function($scope, $http,$routeParams, $location, PageMode){
+gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$location', 'PageMode', 'Sector', 
+                   function($scope, $http,$routeParams, $location, PageMode, Sector){
 
-	$scope.sectors = [];
-	$scope.sector = {id: null, name: '' };
-	
 	var url = $scope.API_SECTOR_URL;
 	
 	$scope.findAll = function(){
@@ -42,10 +39,8 @@ gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$loca
 	};
 	
 	$scope.loadPage = function(){
-		if($routeParams.id){
-			$http.get(url + '/' + $routeParams.id).success(function(response){
-				if(response.status.code === 200) $scope.sector = response.data;
-			}); 
+		if(!PageMode.createMode){
+			$scope.sector = Sector.data;
 		}
 		$scope.pageMode = PageMode;
 	};

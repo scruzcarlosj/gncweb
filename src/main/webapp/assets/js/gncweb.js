@@ -12,28 +12,40 @@ gncweb.config(function($routeProvider, $locationProvider, cfpLoadingBarProvider)
 		controller: 'SectorController',
 		templateUrl: 'partials/pages/sector/searchSector.html',
 		resolve: {
-			PageMode: function(SearchMode){return SearchMode;}
+			PageMode: function(SearchMode){return SearchMode;},
+			Sector: function(){return null;}
 		}});
 	
 	$routeProvider.when('/cadastrar/setor', {
 		controller: 'SectorController',
 		templateUrl: 'partials/pages/sector/createSector.html',
 		resolve: {
-			PageMode: function(CreateMode){return CreateMode;}
+			PageMode: function(CreateMode){return CreateMode;},
+			Sector: function(){return null;}
 	}});
 	
 	$routeProvider.when('/editar/setor/:id', {
 		templateUrl: 'partials/pages/sector/createSector.html',
 		controller: 'SectorController',
 		resolve: {
-			PageMode: function(EditMode){return EditMode;}
+			PageMode: function(EditMode){return EditMode;},
+			Sector: function($http, $rootScope, $route){
+			      return $http.get($rootScope.API_SECTOR_URL + '/' + $route.current.params.id).then(function(response){
+			    	  return response.data;
+			      });
+		    	}
 	}});
 	
 	$routeProvider.when('/visualizar/setor/:id', {
 		templateUrl: 'partials/pages/sector/createSector.html',
 		controller: 'SectorController',
 		resolve: {
-			PageMode: function(ViewMode){return ViewMode;}
+			PageMode: function(ViewMode){return ViewMode;},
+			Sector: function($http, $rootScope, $route){
+			      return $http.get($rootScope.API_SECTOR_URL + '/' + $route.current.params.id).then(function(response){
+			    	  return response.data;
+			      });
+		    	}
 	}});
 	
 	// :::::::::::::: User Routes:::::::::::::
@@ -42,6 +54,7 @@ gncweb.config(function($routeProvider, $locationProvider, cfpLoadingBarProvider)
 		controller: 'UserController',
 		resolve: {
 			PageMode: function(CreateMode){return CreateMode;},
+			User : function(){return null;},
 			Sectors: function($http, $rootScope){
 				      return $http.get($rootScope.API_SECTOR_URL).then(function(response){
 				    	  return response.data;

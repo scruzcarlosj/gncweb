@@ -44,9 +44,13 @@ gncweb.controller('UserController', ['$scope', '$http', '$routeParams', '$locati
 	};
 	
 	$scope.loadPage = function(){
-		$scope.user = User.data;
+		if(!PageMode.createMode){
+			$scope.user = User.data;
+		}
+		if(!PageMode.viewMode){
+			$scope.sectors = Sectors.data;
+		}
 		$scope.pageMode = PageMode;
-		$scope.sectors = Sectors.data;
 	};
 	
 	$scope.remove = function(user, index){
