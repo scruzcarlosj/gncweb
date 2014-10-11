@@ -12,8 +12,7 @@
 </head>
 <body>
 		
-	<header>
-		
+	<header ng-hide="authenticatedUser">
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 	            <div class="navbar-header">
@@ -68,10 +67,13 @@
 	
 	<!-- App Modules -->
 	<script src="assets/js/gncweb.js"></script>
+	<script src="assets/js/login.js"></script>
 	<script src="assets/js/controllers/SectorController.js"></script>
 	<script src="assets/js/services/SectorService.js"></script>
-	
 	<script src="assets/js/controllers/UserController.js"></script>
+	<script src="assets/js/controllers/LoginController.js"></script>
+	
+	<script src="assets/js/services/LoginService.js"></script>
 
 </body>
 </html>

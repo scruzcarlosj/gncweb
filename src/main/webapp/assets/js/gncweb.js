@@ -1,4 +1,4 @@
-var gncweb = angular.module('gncweb', ['ngRoute', 'ngResource', 'chieffancypants.loadingBar', 'ngAnimate']);
+var gncweb = angular.module('gncweb', ['ngRoute', 'ngResource', 'chieffancypants.loadingBar', 'ngAnimate', 'gncweb.login']);
 
 gncweb.config(function($routeProvider, $locationProvider, cfpLoadingBarProvider){
 	

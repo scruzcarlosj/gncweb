@@ -1,0 +1,65 @@
+<style>
+	
+	.container{
+	 	max-width: 500px;
+	}
+	
+	.account-body {
+		position: relative;
+		padding: 35px 30px 10px;
+		margin-bottom: 1em;
+		background-color: #fff;
+		border: 1px solid #ddd;
+		border-top-right-radius: 4px;
+		border-top-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		border-bottom-left-radius: 4px;
+		-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+		box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+	}
+
+</style>
+
+<div class="container">
+
+	  <div class="account-body">
+
+	      <h3>Bem-vindo ao GNCWEB</h3>
+	
+	      <h5>Por favor faça login para acessar o sistema</h5>
+	
+	      <form class="form account-form" name="frm" ng-submit="login()">
+	
+	        <div class="form-group" ng-class="!frm.email.$dirty ? '' : frm.email.$valid ? 'has-success has-feedback' : 'has-error has-feedback'">
+	          <label for="email" class="placeholder-hidden">Email</label>
+	          <input type="email" ng-model="user.email" class="form-control" id="email" name="email" placeholder="Email" required>
+	          <span class="fa fa-check form-control-feedback" style="margin-top: 12px;" ng-show="frm.email.$dirty && frm.email.$valid"></span>
+	        </div> <!-- /.form-group -->
+	
+	        <div class="form-group" ng-class="!frm.password.$dirty ? '' : frm.password.$valid ? 'has-success has-feedback' : 'has-error has-feedback'">
+	          <label for="password" class="placeholder-hidden">Senha</label>
+	          <input type="password" ng-model="user.password" class="form-control" id="password" name="password" placeholder="Senha" required>
+	          <span class="fa fa-check form-control-feedback" style="margin-top: 12px;" ng-show="frm.password.$dirty && frm.password.$valid"></span>
+	        </div> <!-- /.form-group -->
+	
+	        <div class="form-group clearfix">
+	          <div class="pull-left">					
+	            <label class="checkbox-inline">
+	            <input type="checkbox" class="" value="" tabindex="3"> <small>Lembre-me</small>
+	            </label>
+	          </div>
+	
+	          <div class="pull-right">
+	            <small><a href="./account-forgot.html">Esqueceu a senha?</a></small>
+	          </div>
+	        </div> <!-- /.form-group -->
+	
+	        <div class="form-group">
+	          <button type="submit" ng-disabled="frm.$invalid" class="btn btn-primary btn-block btn-lg" tabindex="4">
+	            Login &nbsp; <i class="fa fa-play-circle"></i>
+	          </button>
+	        </div> <!-- /.form-group -->
+	
+	      </form>
+	</div>
+</div>
