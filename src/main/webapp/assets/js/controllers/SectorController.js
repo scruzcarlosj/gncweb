@@ -1,8 +1,8 @@
 'use strict';
 
-gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$location', 'PageMode', 'SectorService', 
-                   function($scope, $http,$routeParams, $location, PageMode, sectorService){
-	
+gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$location', 'PageMode', 
+                   function($scope, $http,$routeParams, $location, PageMode){
+
 	$scope.sectors = [];
 	$scope.sector = {id: null, name: '' };
 	
@@ -35,6 +35,10 @@ gncweb.controller('SectorController', ['$scope', '$http', '$routeParams', '$loca
 		}
 		$location.path('pesquisar/setor');
 		
+	};
+	
+	$scope.edit = function(id){
+		$location.path('editar/setor/'+ id);
 	};
 	
 	$scope.loadPage = function(){

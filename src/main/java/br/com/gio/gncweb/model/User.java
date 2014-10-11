@@ -2,7 +2,6 @@ package br.com.gio.gncweb.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +30,7 @@ public class User extends Model {
 	@Column(length=20, nullable=false)
 	private String password;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="sector_id")
 	private Sector sector;
 	

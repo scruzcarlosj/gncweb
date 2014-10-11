@@ -49,9 +49,48 @@ gncweb.config(function($routeProvider, $locationProvider, cfpLoadingBarProvider)
 			    	}	
 	}});
 	
+	$routeProvider.when('/editar/usuario/:id', {
+		templateUrl: 'partials/pages/user/createUser.html',
+		controller: 'UserController',
+		resolve: {
+			PageMode: function(EditMode){return EditMode;},
+			User : function($http, $rootScope, $route){
+			      return $http.get($rootScope.API_USER_URL + '/' + $route.current.params.id).then(function(response){
+			    	  return response.data;
+			      });
+		    	},
+			Sectors: function($http, $rootScope){
+			      return $http.get($rootScope.API_SECTOR_URL).then(function(response){
+			    	  return response.data;
+			      });
+		    	}	
+	}});
+	
+	$routeProvider.when('/visualizar/usuario/:id', {
+		templateUrl: 'partials/pages/user/createUser.html',
+		controller: 'UserController',
+		resolve: {
+			PageMode: function(ViewMode){return ViewMode;},
+			User : function($http, $rootScope, $route){
+			      return $http.get($rootScope.API_USER_URL + '/' + $route.current.params.id).then(function(response){
+			    	  return response.data;
+			      });
+		    	},
+	    	Sectors: function(){return null;}
+	}});
+	
+	$routeProvider.when('/pesquisar/usuario', {
+		templateUrl: 'partials/pages/user/searchUser.html',
+		controller: 'UserController',
+		resolve: {
+			PageMode: function(ViewMode){return ViewMode;},
+			User : function(){return null;},
+	    	Sectors: function(){return null;}
+	}});
+	
 });
 
-
+//::::::::: Directives ::::::::::::
 gncweb.directive('ngConfirmClick', [function() {
     return {
         restrict: 'A',
@@ -66,6 +105,16 @@ gncweb.directive('ngConfirmClick', [function() {
     };
 }]);
 
+gncweb.directive('editDelete', [function() {
+    return {
+      replace: true,
+      templateUrl : 'partials/templates/editDeleteConfirmation.html',
+      scope: {onConfirm: '&', onEdit: '&'},
+    };
+}]);
+
+
+// ::::::::: Factorys :::::::::
 gncweb.factory('ViewMode', function(){
 	return {
 		viewMode: true,

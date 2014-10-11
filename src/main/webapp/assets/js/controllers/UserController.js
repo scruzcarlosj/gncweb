@@ -1,11 +1,9 @@
 'use strict';
 
-gncweb.controller('UserController', ['$scope', '$http', '$routeParams', '$location', 'PageMode', 'Sectors', 
-                   function($scope, $http,$routeParams, $location, PageMode, Sectors){
+gncweb.controller('UserController', ['$scope', '$http', '$routeParams', '$location', 'PageMode', 'Sectors', 'User', 
+                   function($scope, $http,$routeParams, $location, PageMode, Sectors, User){
 	
 	var url = $scope.API_USER_URL;
-	
-	$scope.sectors = Sectors.data;
 	
 	$scope.findAll = function(){
 		$http.get(url).success(function(response){
@@ -14,7 +12,7 @@ gncweb.controller('UserController', ['$scope', '$http', '$routeParams', '$locati
 	};
 	
 	$scope.findByName = function(){
-		$http.get(url + '/' + $scope.sector.name).success(function(response){
+		$http.get(url + '/' + $scope.user.name).success(function(response){
 			if(response.status.code === 200) $scope.users = response.data;
 		});
 	};
@@ -37,21 +35,21 @@ gncweb.controller('UserController', ['$scope', '$http', '$routeParams', '$locati
 			$http.put(url, $scope.user);
 			$scope.$emit('addSuccessMessage', $scope.UPDATE_SUCCESS_MESSAGE);
 		}
-		$location.path('pesquisar/usuarios');
+		$location.path('pesquisar/usuario');
 		
+	};
+	
+	$scope.edit = function(id){
+		$location.path('editar/usuario/'+ id);
 	};
 	
 	$scope.loadPage = function(){
-		
-		if($routeParams.id){
-			$http.get(url + '/' + $routeParams.id).success(function(response){
-				if(response.status.code === 200) $scope.user = response.data;
-			}); 
-		}
+		$scope.user = User.data;
 		$scope.pageMode = PageMode;
+		$scope.sectors = Sectors.data;
 	};
 	
-	$scope.remove = function(sector, index){
+	$scope.remove = function(user, index){
 		$http.delete(url + '/' + user.id).success(function(response){
 			if(response.status.code === 200) {
 				$scope.users.splice(index, 1);

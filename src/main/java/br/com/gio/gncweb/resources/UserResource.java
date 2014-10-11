@@ -2,8 +2,8 @@ package br.com.gio.gncweb.resources;
 
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,9 +16,7 @@ import br.com.gio.gncweb.service.BaseService;
 import br.com.gio.gncweb.service.UserService;
 import br.com.gio.gncweb.util.Response;
 
-
-
-@RequestScoped
+@Singleton
 @Path("/users")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

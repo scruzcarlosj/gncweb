@@ -11,11 +11,11 @@ import br.com.gio.gncweb.model.User;
 public class UserPersistence extends BasePersistence<Long, User> {
 	
 	public List<User> findAll(){
-		return findAll();
+		return super.findAll();
 	}
 	
 	public User findById(Long id){
-		return findById(id);
+		return super.findById(id);
 	}
 	
 	public List<User> findByName(String name){

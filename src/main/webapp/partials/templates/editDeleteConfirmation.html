@@ -1,0 +1,6 @@
+<div>
+ 	<button type="button" class="btn btn-success btn-xs" ng-click="onEdit()"><i class="fa fa-pencil-square-o"></i> Editar</button> |	
+  	<button type="button" class="btn btn-danger btn-xs" ng-click="isDeleting = true" ng-hide="isDeleting"><i class="fa fa-trash-o"></i> Remover</button>	
+    <button type="button" class="btn btn-default btn-xs" ng-click="isDeleting = false" ng-show="isDeleting"><i class="fa fa-ban"></i> Cancelar</button>
+    <button type="button" class="btn btn-danger btn-xs"  ng-click="onConfirm()" ng-show="isDeleting"><i class="fa fa-trash-o"></i> Confirmar</button>
+</div>
