@@ -3,6 +3,7 @@ gncweb
 
 <h3>Security</h3>
 
+```
 <security-domains>
     <security-domain name="gncweb-jaas-realm">
     <authentication>
@@ -13,3 +14,4 @@ gncweb
         </login-module>
     </authentication>
 </security-domain>
+```
