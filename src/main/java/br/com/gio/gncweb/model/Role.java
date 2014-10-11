@@ -22,7 +22,7 @@ public class Role extends Model {
 	
 	@Column(nullable = false, length = 200)
 	private String name;
-
+	
 	public Long getId() {
 		return id;
 	}

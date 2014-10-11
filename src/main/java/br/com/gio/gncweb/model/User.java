@@ -30,9 +30,14 @@ public class User extends Model {
 	@Column(length=20, nullable=false)
 	private String password;
 	
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name="sector_id")
 	private Sector sector;
+	
+	@ManyToOne
+	@JoinColumn(name="role_id")
+	private Role role;
+	
 	
 	public Long getId() {
 		return id;
@@ -63,6 +68,12 @@ public class User extends Model {
 	}
 	public void setSector(Sector sector) {
 		this.sector = sector;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	
 }
