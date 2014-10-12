@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+	 <security-domain>gncweb-jaas-realm</security-domain>
+	 <disable-audit>false</disable-audit>
+	 <context-root>gncweb</context-root>
+	 <!--<valve><class-name>br.jus.tjba.seg.security.TjbaAuthenticator</class-name></valve>-->
+</jboss-web>
