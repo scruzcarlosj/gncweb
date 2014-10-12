@@ -11,5 +11,5 @@ loginModule.config(function($routeProvider, $locationProvider){
 loginModule.run(function($rootScope){
 	$rootScope.API_SECURITY_URL = 'api/security';
 	
-	$rootScope.authenticatedUser = {};
+	$rootScope.authenticatedUser = null;
 });
